@@ -1,4 +1,4 @@
-package com.consumer;
+package com.consumer.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/consumer")
-public class DateServiceFeignController {
+@RequestMapping("/hello")
+public class ConsumerController {
 
     @Resource
-    DateServiceFeignClientInterface dateServiceFeignClientInterface;
+    HelloService helloService;
 
-    @GetMapping("/date")
-    public String getDate( @RequestParam String param ) {
-        return dateServiceFeignClientInterface.consumer( param );
+    @GetMapping("/hi")
+    public String helloConsumer( @RequestParam String param ) {
+        return helloService.hello( param );
     }
+
 }
