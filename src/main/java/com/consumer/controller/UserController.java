@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
  * http://localhost:9001/movie/findById/2
  */
 @RestController
-@RequestMapping("/movie")
-public class MovieController {
+@RequestMapping("/user")
+public class UserController {
     @Autowired
-    private UserClientService userClientService;
+    private UserService userService;
 
     @GetMapping("/findById/{id}")
     public String findById(@PathVariable Integer id) {
-        String user = userClientService.getById(id);
+        String user = userService.getById(id);
         return user;
     }
 }

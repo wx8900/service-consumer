@@ -2,6 +2,7 @@ package com.consumer.controller;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,18 +12,21 @@ import java.util.List;
 @RestController
 public class FeignController {
 
+    @Resource
+    FeignService feignService;
+
     /**
      * http://localhost:9001/hello
      * @return
      */
     @RequestMapping("/hello")
     public String hello(){
-        System.out.println("访问来1了......");
+        System.out.println(feignService.hello() + "访问来1了......");
         return "hello1";
     }
 
     /**
-         * http://localhost:9001/hjcs
+     * http://localhost:9001/hjcs
      * @param ids
      * @return
      */
@@ -36,22 +40,30 @@ public class FeignController {
     }
 
     /**
-     * http://localhost:9001/hellol?name=Liu
+     * http://localhost:9001/hello1?name=Liu
+     * Hello Liu
      * @param name
      * @return
      */
-    @RequestMapping(value = "/hellol", method= RequestMethod.GET)
+    @RequestMapping(value = "/hello1", method= RequestMethod.GET)
     public String hello(@RequestParam String name) {
         return "Hello " + name;
     }
 
+    /**
+     * http://localhost:9001/hello2?name=Liu&age=18
+     * User{id=1, name='Liu', age=18}
+     * @param name
+     * @param age
+     * @return
+     */
     @RequestMapping(value = "/hello2", method= RequestMethod.GET)
-    public HelloUser hello(@RequestHeader String name, @RequestHeader Integer age) {
-        return new HelloUser(name, age);
+    public String hello(@RequestParam String name, @RequestParam Integer age) {
+        return new User(new Integer(1), name, age).toString();
     }
 
     @RequestMapping(value = "/hello3", method = RequestMethod.POST)
-    public String hello (@RequestBody HelloUser user) {
+    public String hello (@RequestBody User user) {
         return "Hello "+ user. getName () + ", " + user. getAge ();
     }
 

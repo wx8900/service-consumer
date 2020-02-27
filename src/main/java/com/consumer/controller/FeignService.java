@@ -13,17 +13,12 @@ public interface FeignService {
     @RequestMapping("/hello")
     String hello();
 
-    /**
-     * http://localhost:9001/hellol?name=test
-     * @param name
-     * @return
-     */
-    @RequestMapping(value = "/hellol", method= RequestMethod.GET)
+    @RequestMapping(value = "/hello1", method= RequestMethod.GET)
     String hello(@RequestParam("name") String name) ;
 
     @RequestMapping(value = "/hello2", method= RequestMethod.GET)
     User hello(@RequestHeader("name") String name, @RequestHeader("age") Integer age);
 
     @RequestMapping(value = "/hello3", method= RequestMethod.POST)
-    String hello(@RequestBody HelloUser user);
+    String hello(@RequestBody User user);
 }

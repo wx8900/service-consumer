@@ -16,7 +16,7 @@ public class OrderController {
 
     @RequestMapping("/getOrder")
     public String getOrder() {
-        String url = "http://service-provider/getUser";
+        String url = "http://eureka-7001.com:7001/getUser";
         //String url = "http://eureka-7001.com:7001/eureka/getUser";
         String result = restTemplate.getForObject(url, String.class);
         System.out.println("订单服务调用用户服务result ： " + result );
