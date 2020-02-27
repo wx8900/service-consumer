@@ -10,15 +10,13 @@ import org.springframework.web.bind.annotation.*;
 public interface FeignService {
 
     // 服务中方法的映射路径
-    @RequestMapping("/hello")
-    String hello();
 
-    @RequestMapping(value = "/hello1", method= RequestMethod.GET)
+    @RequestMapping(value = "/getUser", method= RequestMethod.GET)
     String hello(@RequestParam("name") String name) ;
 
-    @RequestMapping(value = "/hello2", method= RequestMethod.GET)
-    User hello(@RequestHeader("name") String name, @RequestHeader("age") Integer age);
+    @RequestMapping(value = "/getUserInfo", method= RequestMethod.GET)
+    String hello(@RequestParam("name") String name, @RequestParam("age") Integer age);
 
-    @RequestMapping(value = "/hello3", method= RequestMethod.POST)
+    @RequestMapping(value = "/getUser", method= RequestMethod.POST)
     String hello(@RequestBody User user);
 }

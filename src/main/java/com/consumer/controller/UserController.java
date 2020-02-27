@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * http://localhost:9001/movie/findById/2
+ * http://localhost:9001/user/findById/78
+ * 12345 67890 add : 78
  */
 @RestController
 @RequestMapping("/user")
